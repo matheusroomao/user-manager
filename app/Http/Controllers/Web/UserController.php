@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Service\UserService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -23,7 +24,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        return response()->view(self::VIEW_INDEX);
+        $models = $this->user_service->all($request);
+        return response()->view(self::VIEW_INDEX, compact('models'));
     }
 
     /**
@@ -69,8 +71,19 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        $this->user_service->delete($id);
+        return $this->redirection();
+    }
+
+    private function redirection(): RedirectResponse
+    {
+        toastr(
+            $this->user_service->getDetails()->message,
+            $this->user_service->getDetails()->type
+        );
+
+        return back();
     }
 }

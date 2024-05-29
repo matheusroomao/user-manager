@@ -101,7 +101,7 @@ abstract class AbstractRepository
 
     protected function ordenate(Request $request, $search)
     {
-        $perPage = $request->input('per_page', 15);
+        $perPage = $request->input('per_page', 10);
         $orderBy = $request->orderBy;
         $order = $request->sortedBy;
         if (empty($orderBy)) {
