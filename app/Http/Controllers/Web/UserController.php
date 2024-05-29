@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\UserRequest;
 use App\Service\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,9 +40,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $this->user_service->create($request);
+        return $this->redirection();
     }
 
     /**
@@ -84,6 +86,6 @@ class UserController extends Controller
             $this->user_service->getDetails()->type
         );
 
-        return back();
+        return redirect()->route('user.index');
     }
 }

@@ -8,7 +8,7 @@
 
         <form class="d-flex" role="search">
             <input type="text" class="form-control me-2" id="name" name="search" placeholder="Buscar" autofocus value="{{ request()->get('search') }}">
-            <button class="btn btn-outline-secondary me-2" type="submit">Filtrar</button>
+            <button class="btn btn-outline-primary me-2" type="submit">Filtrar</button>
         </form>
     </div>
 </nav>
@@ -19,7 +19,7 @@
             <div class="d-flex w-100 align-items-center justify-content-between">
                 <strong class="mb-1">{{$model->name}}</strong>
                 <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modaldelete{{$model->id}}">
-                    <i class="bi-trash-fill fs-5"></i>
+                <i class="bi-trash fs-5"></i>
                 </button>
             </div>
             <div class="col-5 mb-1 small">{{$model->email}}</div>
@@ -40,8 +40,8 @@
                                     <p>Você tem certeza disso?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                    <button type="submit" class="btn btn-primary">Sim, apagar</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
+                                    <button type="submit" class="btn btn-danger">Sim, apagar</button>
                                 </div>
                             </div>
                         </div>
@@ -56,12 +56,12 @@
 @if ($models->hasPages())
 <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="{{ $models->previousPageUrl() }}">Voltar</a>
+        <li class="page-item me-1">
+            <a class="btn btn-outline-primary" href="{{ $models->previousPageUrl() }}">Voltar</a>
         </li>
 
         <li class="page-item">
-            <a class="page-link" href="{{ $models->nextPageUrl() }}">Próxima</a>
+            <a class="btn btn-outline-primary" href="{{ $models->nextPageUrl() }}">Próxima</a>
         </li>
     </ul>
 </nav>

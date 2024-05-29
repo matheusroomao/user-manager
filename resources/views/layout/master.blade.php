@@ -23,13 +23,14 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li>
-                    <a href="#" class="nav-link active text-white">
+                    <a href="{{ route('user.index') }}" class="nav-link text-white {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
                         <i class="bi-person-lines-fill me-2"></i>
                         Listagem de Usuários
                     </a>
                 </li>
+                
                 <li>
-                    <a href="#" class="nav-link text-white">
+                    <a href="{{ route('user.create') }}"  class="nav-link text-white {{ Route::currentRouteName() == 'user.create' ? 'active' : '' }}" >
                         <i class="bi-plus-circle-fill me-2"></i>
                         Criar Usuário
                     </a>

@@ -65,7 +65,8 @@ abstract class AbstractRepository
             $this->setDetails('Não encontrado', 'danger', 404);
             return null;
         } catch (Exception $e) {
-            return ['message' => 'Erro ' . $e->getMessage(), 'status' => 500];
+            $this->setDetails('Erro ' . $e->getMessage(), 'error', 500);
+            return null;
         }
     }
 
@@ -80,7 +81,8 @@ abstract class AbstractRepository
             $this->setDetails('Não encontrado', 'danger', 404);
             return null;
         } catch (Exception $e) {
-            return ['message' => 'Erro ' . $e->getMessage(), 'status' => 500];
+            $this->setDetails('Erro ' . $e->getMessage(), 'error', 500);
+            return null;
         }
     }
 
@@ -95,7 +97,8 @@ abstract class AbstractRepository
             $model->delete();
             $this->setDetails('Apagado com sucesso', 'success', 200);
         } catch (Exception $e) {
-            return ['message' => 'Erro ' . $e->getMessage(), 'status' => 500];
+            $this->setDetails('Erro ' . $e->getMessage(), 'error', 500);
+            return null;
         }
     }
 
