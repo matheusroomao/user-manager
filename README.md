@@ -57,7 +57,7 @@ Inicie o servidor
   php artisan serve
 ```
 ```bash
-  npm run start
+  npm run dev
 ```
 
 ## Documentação WEB
