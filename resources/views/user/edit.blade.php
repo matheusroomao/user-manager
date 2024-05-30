@@ -3,7 +3,7 @@
 @section('content')
 <nav class="navbar bg-primary">
     <div class="container-fluid">
-        <i class="bi-plus-circle-fill fs-3 text-white"></i>
+        <i class="bi-pencil-square fs-3 text-white"></i>
         <a class="navbar-brand text-white">Atualizar Usuário</a>
         <div></div>
     </div>
