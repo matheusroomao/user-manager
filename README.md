@@ -108,7 +108,7 @@ Não é necessário enviar todos os campos, apenas o que deseja atualizar.
 | `name`      | `string` |  Nome do usuário |
 | `email`     | `email` | E-mail do usuário |
 | `password`  | `password` | Senha do usuário |
-| `password_confirmation`  | `password` | Confirmação de senha do usuário |
+| `password_confirmation`  | `password` | **Obrigatório quando for atualizar a senha**. Confirmação de senha do usuário |
 
 #### Apagar um usuário
 
