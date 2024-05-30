@@ -26,6 +26,15 @@ class UserTest extends TestCase
         $response->assertSuccessful();
     }
 
+    public function test_if_user_update_successful()  
+    {
+        $data = User::factory()->create();
+        $dataUpdate = ['name'=>fake()->name()];
+
+        $response = $this->putJson('/api/users/'.$data->id, $dataUpdate);
+        $response->assertSuccessful();
+    }
+
     public function test_if_user_find_successful()  
     {
         $data = User::factory()->create();
