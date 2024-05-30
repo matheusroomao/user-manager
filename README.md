@@ -115,3 +115,11 @@ Não é necessário enviar todos os campos, apenas o que deseja atualizar.
 ```http
   DELETE /api/users/{id}
 ```
+## Rodando os testes
+
+Para rodar os testes, rode o seguinte comando
+
+```bash
+  php artisan test
+```
+
