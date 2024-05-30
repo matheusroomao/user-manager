@@ -7,4 +7,4 @@ Route::get('/', function () {
 });
 
 
-Route::resource('usuario', \App\Http\Controllers\Web\UserController::class)->names('user');
+Route::resource('usuarios', \App\Http\Controllers\Web\UserController::class)->names('user');

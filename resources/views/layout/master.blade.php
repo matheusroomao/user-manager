@@ -15,7 +15,7 @@
 
 <body>
     <main class="d-flex flex-nowrap" style="height: 100vh;">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-primary" style="width: 280px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <i class="bi-people-fill fs-1 me-4"></i>
                 <span class="fs-5">Gerenciamento Usuário</span>
@@ -23,14 +23,14 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li>
-                    <a href="{{ route('user.index') }}" class="nav-link text-white {{ Route::currentRouteName() == 'user.index' ? 'active' : '' }}">
+                    <a href="{{ route('user.index') }}" class="nav-link text-white">
                         <i class="bi-person-lines-fill me-2"></i>
                         Listagem de Usuários
                     </a>
                 </li>
                 
                 <li>
-                    <a href="{{ route('user.create') }}"  class="nav-link text-white {{ Route::currentRouteName() == 'user.create' ? 'active' : '' }}" >
+                    <a href="{{ route('user.create') }}" class="nav-link text-white" >
                         <i class="bi-plus-circle-fill me-2"></i>
                         Criar Usuário
                     </a>

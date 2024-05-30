@@ -26,6 +26,22 @@ class UserTest extends TestCase
         $response->assertSuccessful();
     }
 
+    public function test_if_user_find_successful()  
+    {
+        $data = User::factory()->create();
+        $response = $this->getJson('/api/users/'.$data->id);
+        $response->assertSuccessful();
+    }
+
+    public function test_if_user_find_not_found()  
+    {
+        $data = User::factory()->create();
+        $response = $this->deleteJson('/api/users/'.$data->id);
+
+        $response = $this->getJson('/api/users/'.$data->id);
+        $response->assertNotFound();
+    }
+
     public function test_if_user_name_size_min_validation()  
     {
         $data = User::factory()->make(['name'=>'jo'])->getAttributes();

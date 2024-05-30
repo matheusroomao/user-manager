@@ -1,11 +1,10 @@
 @extends('layout.master')
 
 @section('content')
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-primary">
     <div class="container-fluid">
-        <i class="bi-plus-circle-fill fs-3"></i>
-
-        <a class="navbar-brand">Criar Usuário</a>
+        <i class="bi-plus-circle-fill fs-3 text-white"></i>
+        <a class="navbar-brand text-white">Criar Usuário</a>
         <div></div>
     </div>
 </nav>
