@@ -29,11 +29,11 @@
                     <div class="row">
                         <div class="col-sm-6 mb-2">
                             <label for="password">Senha <b class="text-danger">*</b></label>
-                            <input class="form-control" type="password" name="password" value="{{ old('password') }}" />
+                            <input class="form-control" type="password" name="password" />
                         </div>
                         <div class="col-sm-6 mb-2">
                             <label for="password">Confirme a Senha <b class="text-danger">*</b></label>
-                            <input class="form-control" type="password" name="password_confirmation" value="{{ old('password_confirmation') }}" />
+                            <input class="form-control" type="password" name="password_confirmation" />
                         </div>
                     </div>
 
