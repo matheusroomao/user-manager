@@ -55,7 +55,10 @@ abstract class AbstractRepository
         try {
             $model = $this->model->find($id);
             if (!empty($model)) {
-                $model->fill($request->all());
+                $data = $model->getAttributes();
+                $array_diff = array_diff($request->all(), $data);
+        
+                $model->fill($array_diff);
                 $model->save();
 
                 $this->setDetails('Atualizado com sucesso', 'success', 200);

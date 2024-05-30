@@ -23,8 +23,9 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = intval($this->route()->parameter("user"));
         $rules = [];
-        if (empty(intval($this->route()->parameter("user")))) {
+        if (empty($id)) {
             $rules =  [
                 'name' => ['required', 'min:3', 'max:50', 'string'],
                 'email' => ['required', 'max:70', 'email', 'unique:users,email'],
@@ -36,7 +37,7 @@ class UserRequest extends FormRequest
                 $rules['name'] = $name;
             }
             if ($this->request->has('email')) {
-                $email = ['required', 'max:70', 'email', 'unique:users,email'];
+                $email = ['required', 'max:70', 'email', 'unique:users,email,' . $id];
                 $rules['email'] = $email;
             }
             if ($this->request->has('password')) {

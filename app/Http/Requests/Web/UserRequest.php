@@ -23,17 +23,35 @@ class UserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            'name' => ['required', 'min:3', 'max:50', 'string'],
-            'email' => ['required', 'max:70', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:6', 'max:20', 'confirmed']
-        ];
+    {   
+        $id = intval($this->usuario);
+        $rules = [];
+        if (empty($id)) {
+            $rules =  [
+                'name' => ['required', 'min:3', 'max:50', 'string'],
+                'email' => ['required', 'max:70', 'email', 'unique:users,email'],
+                'password' => ['required', 'min:6', 'max:20', 'confirmed']
+            ];
+        } else {
+            if ($this->name) {
+                $name = ['required', 'min:3', 'max:50', 'string'];
+                $rules['name'] = $name;
+            }
+            if ($this->email) {
+                $email = ['required', 'max:70', 'email', 'unique:users,email,' . $id];
+                $rules['email'] = $email;
+            }
+            if ($this->password) {
+                $password = ['required', 'min:6', 'max:20', 'confirmed'];
+                $rules['password'] = $password;
+            }
+        }
+        return $rules;
     }
 
     protected function failedValidation(Validator $validator)
     {
-        toastr($validator->errors()->first(),'info');
+        toastr($validator->errors()->first(),'warning',[],'Aviso');
         throw (new ValidationException($validator))
             ->errorBag($this->errorBag)
             ->redirectTo($this->getRedirectUrl());

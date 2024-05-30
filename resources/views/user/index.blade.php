@@ -1,28 +1,39 @@
 @extends('layout.master')
 
 @section('content')
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-primary">
     <div class="container-fluid">
-        <i class="bi-person-lines-fill fs-3"></i>
-        <a class="navbar-brand">Usuários</a>
+        <i class="bi-person-lines-fill fs-3 text-white"></i>
+        <a class="navbar-brand text-white">Usuários</a>
 
         <form class="d-flex" role="search">
             <input type="text" class="form-control me-2" id="name" name="search" placeholder="Buscar" autofocus value="{{ request()->get('search') }}">
-            <button class="btn btn-outline-primary me-2" type="submit">Filtrar</button>
+            <button class="btn btn-outline-light me-2" type="submit">Filtrar</button>
         </form>
     </div>
 </nav>
 <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary flex-grow-1">
+    @if(!empty($models->all()))
     <div class="list-group list-group-flush border-bottom scrollarea">
         @foreach ($models as $model)
         <div class="list-group-item list-group-item-action py-2 lh-sm">
             <div class="d-flex w-100 align-items-center justify-content-between">
-                <strong class="mb-1">{{$model->name}}</strong>
-                <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modaldelete{{$model->id}}">
-                <i class="bi-trash fs-5"></i>
-                </button>
+                <h5 class="card-title">#{{$model->id}} - {{$model->name}}</h5>
+                <p class="card-text">{{$model->email}}</p>
+                <div>
+                    <div class="d-inline-block me-2">
+                        <a type="button" class="btn btn-primary" href="{{ route('user.edit',$model->id) }}">
+                            <i class="bi-pencil-square fs-5"></i>
+                        </a>
+                    </div>
+                    <div class="d-inline-block">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaldelete{{$model->id}}">
+                            <i class="bi-trash fs-5"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="col-5 mb-1 small">{{$model->email}}</div>
+            <div class="col-5 mb-1 small">Criado em {{$model->created_at->format('d/m/Y H:i:s')}}</div>
         </div>
         <div class="col d-flex justify-content-end">
             <div>
@@ -51,6 +62,9 @@
         </div>
         @endforeach
     </div>
+    @else
+    <p class="mt-5 fs-1 d-flex justify-content-center">Nenhum usuário cadastrado!</p>
+    @endif
 </div>
 
 @if ($models->hasPages())

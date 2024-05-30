@@ -12,6 +12,7 @@ class UserController extends Controller
 {
     private const VIEW_INDEX = "user.index";
     private const VIEW_CREATE = "user.create";
+    private const VIEW_EDIT = "user.edit";
 
     private UserService $user_service;
 
@@ -51,7 +52,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $model = $this->user_service->findById($id);
+        return $model;
     }
 
     /**
@@ -59,15 +61,17 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $model = $this->user_service->findById($id);
+        return response()->view(self::VIEW_EDIT, compact('model'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $this->user_service->update($request, $id);
+        return $this->redirection();
     }
 
     /**
@@ -83,7 +87,9 @@ class UserController extends Controller
     {
         toastr(
             $this->user_service->getDetails()->message,
-            $this->user_service->getDetails()->type
+            $this->user_service->getDetails()->type,
+            [],
+            "Informação"
         );
 
         return redirect()->route('user.index');
