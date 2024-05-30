@@ -1,7 +1,7 @@
 
 # Gerenciamento de Usuários
 
-Este projeto é um sistema simples de CRUD (Create, Read, Update, Delete) WEB e API rest full para gerenciamento de usuários. O sistema permite criar novos usuários, visualizar a lista de usuários, atualizar informações existentes e deletar usuários.
+Este projeto é um sistema simples de CRUD (Create, Read, Update, Delete) WEB e API, para gerenciamento de usuários. O sistema permite criar novos usuários, visualizar a lista de usuários, atualizar informações existentes e deletar usuários.
 
 
 ## Stack utilizada
