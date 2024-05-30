@@ -31,7 +31,8 @@ abstract class AbstractRepository
             $this->setDetails(null, 'success', 200);
             return $models;
         } catch (Exception $e) {
-            return ['message' => 'Erro encontrado com o código ' . $e->getMessage(), 'status' => 500];
+            $this->setDetails('Erro ' . $e->getMessage(), 'error', 500);
+            return null;
         }
     }
 
@@ -46,7 +47,8 @@ abstract class AbstractRepository
             $this->setDetails('Salvo com sucesso', 'success', 201);
             return $model;
         } catch (Exception $e) {
-            return ['message' => 'Erro ' . $e->getMessage(), 'status' => 500];
+            $this->setDetails('Erro ' . $e->getMessage(), 'error', 500);
+            return null;
         }
     }
 
